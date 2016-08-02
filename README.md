@@ -6,6 +6,8 @@ This is a set of scripts for compositing a story from prewritten, interchangeabl
 
 The threading script takes these pieces and assembles them into one of the several possible stories.
 
+This is a rough prototype and may change rapidly. Comments are welcome in the tracker or to Finn at finnre@pdx.edu.
+
 ## Usage
 `./thread.py "chapter.json"` reads the specified chapter file and outputs a story.
 
@@ -79,3 +81,8 @@ And here's another one:
 > After all that, I still got a good night of sleep afterwards. Boy, what a great day.
 
 The activities always appear in a sensible sequence, ending in the party, and each destination is matched with an appropriate thing to do at that destination. However, the details of each one-sentence "scene" are shuffled between stories, such as the syntax and the names of other characters, since those things aren't important to the flow of the overall narrative.
+
+## Goals
+* Authoring tools that aren't a text editor and a JSON file. (Autoadjusting fields, ease of previewing many combinations.)
+* Character objects that can group together a name, pronouns, and potentially other contextual information.
+* Global story variables (which could among other things appear in introductions and conclusions).
