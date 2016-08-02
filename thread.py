@@ -1,24 +1,19 @@
 #!/usr/bin/python
 
 import random
+import json
 
-def filestring(filename):
-    with open(filename) as f:
-        return f.read()
+with open("chapter.json") as f:
+    chapter = json.loads(f.read())
 
-ordinals = ["first", "second", "third"]
-scenes = ["scene-market", "scene-family", "scene-inn"]
-stories = ["story1", "story2", "story3"]
+random.shuffle(chapter["scenes"])
 
-# randomize the scene order
-random.shuffle(scenes)
-
-
-print filestring("introduction")
+print chapter["introduction"]
 print
-for i in range(len(scenes)):
-    scene = filestring(scenes[i])
-    story = filestring(stories[i])
-    print scene.format(ordinal=ordinals[i], story=story)
+for i in range(len(chapter["story"])):
+    scene = chapter["scenes"][i]
+    story = chapter["story"][i]
+    story["var"]["story"] = story["text"]
+    print scene.format(**story["var"])
     print
-print filestring("conclusion")
+print chapter["conclusion"]
