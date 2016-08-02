@@ -1,0 +1,26 @@
+{
+  "introduction": "I had a great day yesterday! It started when I woke up and remembered that Julia's birthday party was that evening.",
+  "conclusion": "After all that, I still got a good night of sleep afterwards. Boy, what a great day.",
+  "scenes": [
+    "{ordinal}, I went to {destination}. I saw Alan there, and we {event}.",
+    "{ordinal} I called my friend Caitlin and we went to {destination}. When we got there we {event}.",
+    "{ordinal}, Andy gave me a ride to {destination}. We found a group of our friends already there, so we joined them and {event}."
+  ],
+  "story": [
+    {
+      "ordinal": "First",
+      "destination": "the park",
+      "event": "played frisbee for a while"
+    },
+    {
+      "ordinal": "Next",
+      "destination": "the grocery store",
+      "event": "bought some ice cream"
+    },
+    {
+      "ordinal": "Finally",
+      "destination": "Julia's party",
+      "event": "ate cake and ice cream"
+    }
+  ]
+}
