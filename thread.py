@@ -1,5 +1,13 @@
 #!/usr/bin/python
 
+"""
+Story generator based on JSON chapter files.
+See README.md for file format.
+
+(c) 2016 Finn Rose Ellis. Licensed under the MIT License.
+See LICENSE.txt for license details.
+"""
+
 import random
 import json
 import sys
