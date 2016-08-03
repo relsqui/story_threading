@@ -2,25 +2,45 @@
   "introduction": "I had a great day yesterday! It started when I woke up and remembered that Julia's birthday party was that evening.",
   "conclusion": "After all that, I still got a good night of sleep afterwards. Boy, what a great day.",
   "scenes": [
-    "{ordinal}, I went to {destination}. I saw Alan there, and we {event}.",
-    "{ordinal} I called my friend Caitlin and we went to {destination}. When we got there we {event}.",
-    "{ordinal}, Andy gave me a ride to {destination}. We found a group of our friends already there, so we joined them and {event}."
+    "{ordinal}, I went to {destination}. I saw {who} there, and {who.they} and I {event}.",
+    "{ordinal} I called my friend {who} and we went to {destination}. When we got there, {who.they} {event} while I {event2}.",
+    "{ordinal}, {who} gave me a ride to {destination}. We found a group of our friends already there, so we joined them. {who.They} {event2}, and I {event}."
   ],
   "story": [
     {
       "ordinal": "First",
       "destination": "the park",
-      "event": "played frisbee for a while"
+      "event": "practiced freethrows",
+      "event2": "read a book",
+      "who": 1
     },
     {
       "ordinal": "Next",
       "destination": "the grocery store",
-      "event": "bought some ice cream"
+      "event": "bought some ice cream",
+      "event2": "picked out a cake",
+      "who": 2
     },
     {
       "ordinal": "Finally",
       "destination": "Julia's party",
-      "event": "ate cake and ice cream"
+      "event": "ate cake and ice cream",
+      "event2": "danced",
+      "who": 0
+    }
+  ],
+  "characters": [
+    {
+      "name": "Caitlin",
+      "pronouns": "she"
+    },
+    {
+      "name": "Alan",
+      "pronouns": "he"
+    },
+    {
+      "name": "Andy",
+      "pronouns": "he"
     }
   ]
 }

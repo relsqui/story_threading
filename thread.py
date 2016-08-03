@@ -12,6 +12,8 @@ import random
 import json
 import sys
 
+import character
+
 
 # Grab the filename from the command line and open it.
 if len(sys.argv) == 2:
@@ -32,6 +34,12 @@ if chapter["introduction"]:
     print(chapter["introduction"])
 
 for story in chapter["story"]:
+    # Replace integer variables with the corresponding character object.
+    characters = {k:v for k,v in story.items() if isinstance(v, int)}
+    for k,v in characters.items():
+        c = chapter["characters"][v]
+        story[k] = character.Character(c["name"], c["pronouns"])
+
     rejects = []
     found_scene = False
     while chapter["scenes"] and not found_scene:
