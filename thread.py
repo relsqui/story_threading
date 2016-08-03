@@ -23,9 +23,24 @@ with open(chapterfile) as f:
 
 random.shuffle(chapter["scenes"])
 
-print chapter["introduction"]
-print
-for i in range(len(chapter["story"])):
-    print chapter["scenes"][i].format(**chapter["story"][i])
-    print
-print chapter["conclusion"]
+if chapter["introduction"]:
+    print chapter["introduction"]
+
+for story in chapter["story"]:
+    rejects = []
+    found_scene = False
+    while chapter["scenes"] and not found_scene:
+        try:
+            scene = chapter["scenes"].pop()
+            print scene.format(**story)
+            found_scene = True
+            break
+        except KeyError:
+            rejects.append(scene)
+    chapter["scenes"].extend(rejects)
+    if not found_scene:
+        print "Couldn't find an approprate scene for story with these keys:", ", ".join(story.keys())
+        sys.exit(2)
+
+if chapter["conclusion"]:
+    print chapter["conclusion"]

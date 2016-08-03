@@ -23,6 +23,8 @@ This key corresponds to a list of text blocks which will be rearranged in the co
 ### "story"
 The story is a list of objects whose contents will always appear in the final story in the same order as they do in the chapter file. Each object should include a set of keys corresponding to the variables in the scene text. The corresponding values will be inserted into whatever scene that piece of story ends up matched with sequentially.
 
+The story threader will always try to match up scenes to story in such a way that the story provides at least the correct set of variables to fill in the scene. (It may also contain extras.) If such a scene isn't available, it will stop with an error.
+
 ## Example
 Here's a short and sweet chapter file which is included in the respository as `example.json`. A longer demonstration is in `carnelian.json`.
 
@@ -58,26 +60,18 @@ Here's a short and sweet chapter file which is included in the respository as `e
 Here's one story that was generated from that file:
 
 > I had a great day yesterday! It started when I woke up and remembered that Julia's birthday party was that evening.
-
 > First, I went to the park. I saw Alan there, and we played frisbee for a while.
-
 > Next I called my friend Caitlin and we went to the grocery store. When we got there we bought some ice cream.
-
 > Finally, Andy gave me a ride to Julia's party. We found a group of our friends already there, so we joined them and ate cake and ice cream.
-
 > After all that, I still got a good night of sleep afterwards. Boy, what a great day.
 
 
 And here's another one:
 
 > I had a great day yesterday! It started when I woke up and remembered that Julia's birthday party was that evening.
-
 > First I called my friend Caitlin and we went to the park. When we got there we played frisbee for a while.
-
 > Next, Andy gave me a ride to the grocery store. We found a group of our friends already there, so we joined them and bought some ice cream.
-
 > Finally, I went to Julia's party. I saw Alan there, and we ate cake and ice cream.
-
 > After all that, I still got a good night of sleep afterwards. Boy, what a great day.
 
 The activities always appear in a sensible sequence, ending in the party, and each destination is matched with an appropriate thing to do at that destination. However, the details of each one-sentence "scene" are shuffled between stories, such as the syntax and the names of other characters, since those things aren't important to the flow of the overall narrative.
