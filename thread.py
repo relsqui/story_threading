@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 """
 Story generator based on JSON chapter files.
@@ -15,7 +15,7 @@ import sys
 if len(sys.argv) == 2:
     chapterfile = sys.argv[1]
 else:
-    print "Please pass exactly one argument: a chapter filename."
+    print("Please pass exactly one argument: a chapter filename.")
     sys.exit(1)
 
 with open(chapterfile) as f:
@@ -24,7 +24,7 @@ with open(chapterfile) as f:
 random.shuffle(chapter["scenes"])
 
 if chapter["introduction"]:
-    print chapter["introduction"]
+    print(chapter["introduction"])
 
 for story in chapter["story"]:
     rejects = []
@@ -32,15 +32,15 @@ for story in chapter["story"]:
     while chapter["scenes"] and not found_scene:
         try:
             scene = chapter["scenes"].pop()
-            print scene.format(**story)
+            print(scene.format(**story))
             found_scene = True
             break
         except KeyError:
             rejects.append(scene)
     chapter["scenes"].extend(rejects)
     if not found_scene:
-        print "Couldn't find an approprate scene for story with these keys:", ", ".join(story.keys())
+        print("Couldn't find an approprate scene for story with these keys:", ", ".join(story.keys()))
         sys.exit(2)
 
 if chapter["conclusion"]:
-    print chapter["conclusion"]
+    print(chapter["conclusion"])
