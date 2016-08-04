@@ -24,25 +24,31 @@ else:
 with open(chapterfile) as f:
     chapter = json.loads(f.read())
 
-
 # Reorder the scene list randomly.
 random.shuffle(chapter["scenes"])
 
+# Generate character objects.
+characters = []
+for c in chapter["characters"]:
+    characters.append(character.Character(c["name"], c["pronouns"]))
 
 # Generate and print the story.
 if chapter["introduction"]:
     print(chapter["introduction"])
 
 for story in chapter["story"]:
-    # Replace integer variables with the corresponding character object.
-    characters = {k:v for k,v in story.items() if isinstance(v, int)}
-    for k,v in characters.items():
-        c = chapter["characters"][v]
-        story[k] = character.Character(c["name"], c["pronouns"])
+    # Replace integer variables with the corresponding characters.
+    for k,v in story.items():
+        try:
+            story[k] = characters[v]
+        except TypeError:
+            # Value wasn't an integer, ignore it.
+            pass
 
     rejects = []
     found_scene = False
     while chapter["scenes"] and not found_scene:
+        # Look for a scene whose variables match the next story piece.
         try:
             scene = chapter["scenes"].pop()
             print(scene.format(**story))
@@ -50,8 +56,7 @@ for story in chapter["story"]:
             found_scene = True
             break
         except KeyError:
-            # Didn't have the right variables.
-            # Set that scene aside and keep looking.
+            # Didn't have the right variables, set it aside and keep looking.
             rejects.append(scene)
     # Put the rejected scenes for this story piece back.
     chapter["scenes"].extend(rejects)
