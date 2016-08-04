@@ -68,4 +68,6 @@ Here's another story from the same chapter file. The pieces in the story section
 * Authoring tools that aren't a text editor and a JSON file. (Autoadjusting fields, ease of previewing many combinations.)
   * Stop using JSON altogether so we can put more semantics in the savefiles. Related to the above because there still has to be a nice way for humans to create the files.
 * ~~Character objects that can group together a name, pronouns, and potentially other contextual information.~~
-* Global story variables (which could among other things appear in introductions and conclusions).
+* ~~Global story variables (which could among other things appear in introductions and conclusions).~~
+* Tests!
+* Move these into the issue tracker.

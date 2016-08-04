@@ -1,5 +1,5 @@
 {
-  "introduction": "I had a great day yesterday! It started when I woke up and remembered that Julia's birthday party was that evening.",
+  "introduction": "I had a great day yesterday! It started when I woke up and remembered that {partier}'s birthday party was that evening.",
   "conclusion": "After all that, I still got a good night of sleep afterwards. Boy, what a great day.",
   "scenes": [
     "{ordinal}, I went to {destination}. I saw {who} there, and {who.they} and I {event}.",
@@ -23,7 +23,7 @@
     },
     {
       "ordinal": "Finally",
-      "destination": "Julia's party",
+      "destination": "the party",
       "event": "ate cake and ice cream",
       "event2": "danced",
       "who": 0
@@ -41,6 +41,13 @@
     {
       "name": "Andy",
       "pronouns": "he"
+    },
+    {
+      "name": "Julia",
+      "pronouns": "she"
     }
-  ]
+  ],
+  "globals": {
+    "partier": 3
+  }
 }

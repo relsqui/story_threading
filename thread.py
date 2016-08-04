@@ -32,9 +32,19 @@ characters = []
 for c in chapter.get("characters", []):
     characters.append(character.Character(c["name"], c["pronouns"]))
 
+# Replace integer globals with the appropriate character.
+if "globals" not in chapter:
+    chapter["globals"] = {}
+for k,v in chapter["globals"].items():
+    try:
+        chapter["globals"][k] = characters[v]
+    except TypeError:
+        # Value wasn't an integer, ignore it.
+        pass
+
 # Generate and print the story.
 if chapter["introduction"]:
-    print(chapter["introduction"])
+    print(chapter["introduction"].format(**chapter["globals"]))
 
 for story in chapter["story"]:
     # Replace integer variables with the corresponding characters.
@@ -44,6 +54,9 @@ for story in chapter["story"]:
         except TypeError:
             # Value wasn't an integer, ignore it.
             pass
+
+    # Add globals to the available story variables.
+    story.update(chapter["globals"])
 
     rejects = []
     found_scene = False
@@ -65,4 +78,4 @@ for story in chapter["story"]:
         sys.exit(2)
 
 if chapter["conclusion"]:
-    print(chapter["conclusion"])
+    print(chapter["conclusion"].format(**chapter["globals"]))
