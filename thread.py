@@ -29,7 +29,7 @@ random.shuffle(chapter["scenes"])
 
 # Generate character objects.
 characters = []
-for c in chapter["characters"]:
+for c in chapter.get("characters", []):
     characters.append(character.Character(c["name"], c["pronouns"]))
 
 # Generate and print the story.
