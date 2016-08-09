@@ -11,18 +11,14 @@ See LICENSE.txt for license details.
 import random
 import json
 import sys
+import fileinput
 
 import character
 
 
 # Grab the filename from the command line and open it.
-if len(sys.argv) == 2:
-    chapterfile = sys.argv[1]
-else:
-    print("Please pass exactly one argument: a chapter filename.")
-    sys.exit(1)
-with open(chapterfile) as f:
-    chapter = json.loads(f.read())
+with fileinput.input() as f:
+    chapter = json.loads("\n".join(f))
 
 # Reorder the scene list randomly.
 random.shuffle(chapter["scenes"])
