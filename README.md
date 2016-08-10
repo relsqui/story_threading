@@ -9,7 +9,13 @@ They may also contain information about characters that can be inserted into the
 This is a rough prototype and may change rapidly. Comments are welcome in the tracker or to Finn at finnre@pdx.edu.
 
 ## Usage
-`./thread.py "chapter.json"` reads the specified chapter file and outputs a story.
+`./thread.py chapter.json` reads the specified chapter file and outputs a story.
+
+`./compile.py storydir/` takes a directory of story information and compiles it into a single chapter file, which it outputs on stdout. The structure of the directory is detailed below, and there's an example in [UFO/](UFO).
+
+The story threader accepts stdin, so you can also combine these:
+
+`./compile.py storydir/ | ./thread.py` will take a directory of information and output a story. This is useful when you're writing or testing and don't need a single file to share.
 
 ## File Format
 A chapter file should contain only a JSON object with at least four top-level keys:
@@ -49,6 +55,19 @@ If present, this key should hold a list of objects, each of which has two proper
 * `"pronouns"` should be one of: "he" "she" or "they" (case insensitive)
 
 Each character is referred to by their index in this list. (The first character is 0, then 1, 2, etc.) When a scene contains a variable that corresponds to an integer value in the story, that value will be replaced by the appropriate character's name. Generic pronouns can also be added and will be replaced by the appropriate pronoun for the character; see "scenes" above.
+
+## Directory Structure
+The compile script will look for the following files in the directory you tell it to compile. See previous section for full descriptions of what each field means.
+
+## introduction and conclusion
+The content of these sections. They can be empty.
+
+## scenes/
+A subdirectory containing text files of scene information. The scene file names will be ignored.
+
+## vars.py
+A single python expression, representing the dictionary of other values: at a minimum, a story list, and optionally globals and/or characters. Here's an [example](UFO/vars.py) of the structure.
+
 
 ## Example
 The following story was generated from the [example chapter file](chapters/example.json) included in the repository.
