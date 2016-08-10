@@ -39,6 +39,9 @@ The story is a list of objects whose contents will always appear in the final st
 
 The story threader will always try to match up scenes to story in such a way that the story provides at least the correct set of variables to fill in the scene. (It may also contain extras.) If such a scene isn't available, it will stop with an error.
 
+### Optional: "globals"
+Exactly as above, an object whose keys are variable names and values are either strings or integers referring to characters. The globals are applied to every section, in addition to the story-specific variables.
+
 ### Optional: "characters"
 If present, this key should hold a list of objects, each of which has two properties.
 
